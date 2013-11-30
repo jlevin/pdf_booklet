@@ -22,12 +22,12 @@ Dir.mkdir("booklets") unless File.exists?("booklets")
 
 Dir.chdir("temp")
 
-#Set variables for: total number of files (pages), filename
+#Create array of individual pdfs
 pages = Dir["*.pdf"]
 pages.each do |page|
   pagenum = page.to_s.scan(/\d+/)
   pdf = ImageList.new("#{page}") { 
-    self.density = "30"}
+    self.density = "300"}
     width = pdf[0].columns
     height = pdf[0].rows
   

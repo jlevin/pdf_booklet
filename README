@@ -1,7 +1,7 @@
 pdf_booklet
 ===========
 
-pdf_booklet is a command-line utility that takes multi-page pdf scans of an unbound book (two pages per page) and returns a pdf with all the pages in the correct order.  In other words, if you took the staples out of a booklet, and the whole thing through a scanner, this script would turn that output file into an ordered multipage pdf.  
+pdf_booklet is a command-line utility that takes multi-page pdf scans of an unbound book (two pages per page) and returns a pdf with all the pages in the correct order.  In other words, if you took the staples out of a booklet, and fed the whole thing through a scanner, this script would turn that output file into an ordered multipage pdf.  
 
 Dependencies
 
