@@ -1,4 +1,30 @@
 pdf_booklet
 ===========
 
-Splits apart and re-numbers a multipage pdf of a scanned book.  
+pdf_booklet is a command-line utility that takes multi-page pdf scans of an unbound book (two pages per page) and returns a pdf with all the pages in the correct order.  In other words, if you took the staples out of a booklet, and the whole thing through a scanner, this script would turn that output file into an ordered multipage pdf.  
+
+Dependencies
+
+1. Install pdftk server.  It is used to split apart and re-order pdfs.
+   http://www.pdflabs.com/tools/pdftk-server/
+
+2. Install imagemagick.  This is used to manipulate pdf images.  Install using homebrew.  
+   brew install imagemagick
+
+3. Install rmagick.  This works with imagemagick via ruby.  Install using rubygems. 
+   gem 'rmagick'
+
+4. Install ghostscript, a pdf interpreter.  Install using homebrew.  
+   brew install ghostscript
+
+Usage
+
+Move the target pdfs into the same directory as pdf_booklet.rb.  In the terminal type:
+
+	$ ruby pdf_booklet.rb example1.pdf example2.pdf
+
+OR to target all pdfs in that directory
+
+	$ ruby pdf_booklet.rb *.pdf
+
+pdf_booklet will create a new folder called booklets and output files will be placed there.

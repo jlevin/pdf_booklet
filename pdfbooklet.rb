@@ -11,13 +11,14 @@ class Array
   end
 end
 
-#For each file (NOT WRITTEN YET)
+#Burst pdf into single pages, split pages, and reorder into single pdf
+def make_booklet(inputpdf)
 original_dir = Dir.pwd
 Dir.mkdir("temp")
 Dir.mkdir("booklets") unless File.exists?("booklets")
 
-#split into individual pdfs in
-`pdftk #{ARGV[0]} burst output temp/page_%02d.pdf`
+#split into individual pdfs
+`pdftk '#{inputpdf}' burst output temp/page_%02d.pdf`
 
 Dir.chdir("temp")
 
@@ -55,9 +56,15 @@ b_pages_even = b_pages.even_values
 combined_pages = b_pages_even.zip(a_pages_odd).flatten + b_pages_odd.zip(a_pages_even).flatten
 
 #combine all pdfs to single pdf with original name in folder /booklets
-`pdftk #{combined_pages.join(' ')} output #{File.join(File::SEPARATOR , original_dir, 'booklets', ARGV[0])}`
+`pdftk #{combined_pages.join(' ')} output '#{File.join(File::SEPARATOR , original_dir, 'booklets', inputpdf)}'`
 
 #delete contents of /temp
 Dir["*"].each {|f| File.delete(f) }
 Dir.chdir(original_dir)
 Dir.delete("temp")
+end
+
+#For each input pdf
+ARGV.each do |input|
+  make_booklet(input)
+end
