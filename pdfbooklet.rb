@@ -28,8 +28,8 @@ def make_booklet(inputpdf)
     pagenum = page.to_s.scan(/\d+/)
     pdf = ImageList.new("#{page}") { 
       self.density = "300"}
-      width = pdf[0].columns
-      height = pdf[0].rows
+    width = pdf[0].columns
+    height = pdf[0].rows
   
     # crop and output as jpgs then pdfs for 1st page  
     pageone = pdf.crop(0, 0, width/2, height)
